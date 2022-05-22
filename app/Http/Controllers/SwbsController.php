@@ -63,7 +63,7 @@ class SwbsController extends Controller
     public function detailSubsistem($swbs_id, $subsistem_id){
         $title = 'Detail Komponen Sub Sistem';
         $data = Swbs_komponen::with('subsistem')->get();
-        $subsistem = sub_swbs::with('swbs')->where('swbs_id', $swbs_id)->get();
+        $subsistem = sub_swbs::with('swbs')->get();
 
         // dd($data);
 

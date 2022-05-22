@@ -55,6 +55,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    {{-- {{ dd($subsistem) }} --}}
                                     <label for="" class="control-label"><h5>Nama Sub Sistem</h5></label>
                                     <select name="subsistem_id" class="form-control @error('subsistem_id')
                                     @enderror">

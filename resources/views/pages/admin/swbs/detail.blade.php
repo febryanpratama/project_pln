@@ -132,6 +132,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
+                                        {{-- {{ dd($data) }} --}}
                                         @foreach ($data as $item=>$key)
                                         <tr>
                                             <td>{{ $key->swbs->nama_sistem }}</td>
@@ -140,7 +141,7 @@
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     <button class="btn btn-info text-white m-2">
-                                                        <a href="{{ url('swbs/'. $key->id .'/sub-sistem/'.$key->id) }}" class="text-white">Detail komponen</a>
+                                                        <a href="{{ url('swbs/'. $key->swbs_id .'/sub-sistem/'.$key->id) }}" class="text-white">Detail komponen</a>
                                                     </button>
                                                     <button class="btn btn-warning text-white m-2">
                                                         <a href="#" class="text-white">Edit</a>
