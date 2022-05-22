@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DetectionController;
+use App\Http\Controllers\FungsiControlller;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\OccurenceController;
 use App\Http\Controllers\RpnController;
+use App\Http\Controllers\SwbsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +60,28 @@ Route::controller(RpnController::class)->group(function(){
     Route::prefix('rpn')->group(function(){
         Route::get('/', 'index');
         Route::post('/', 'store');
+    });
+});
+
+Route::controller(SwbsController::class)->group(function(){
+    Route::prefix('swbs')->group(function(){
+        Route::get('/', 'index');
+        Route::get('/{swbs_id}', 'detail');
+        Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
+        Route::post('/', 'store');
+        Route::post('/sub-sistem', 'subSistem');
+        Route::post('/komponen', 'komponen');
+    });
+});
+
+Route::controller(FungsiControlller::class)->group(function(){
+    Route::prefix('fungsi-sistem')->group(function(){
+        Route::get('/', 'index');
+        Route::get('/{swbs_id}', 'detail');
+        Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
+        Route::post('/', 'store');
+        Route::post('/sub-sistem', 'subSistem');
+        Route::post('/komponen', 'komponen');
     });
 });
 
