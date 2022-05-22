@@ -14,7 +14,8 @@ class SwbsController extends Controller
     //
     public function index(){
         $title = "System Work Breakdown Structure List";
-        $data = swbs::get();
+        $data = swbs::orderBy('kode_sistem', 'asc')->get();
+        // dd($data);
         return view('pages.admin.swbs.index', compact(['title', 'data']));
     }
 
@@ -62,8 +63,8 @@ class SwbsController extends Controller
 
     public function detailSubsistem($swbs_id, $subsistem_id){
         $title = 'Detail Komponen Sub Sistem';
-        $data = Swbs_komponen::with('subsistem')->get();
-        $subsistem = sub_swbs::with('swbs')->get();
+        $data = Swbs_komponen::with('subsistem')->where('subsistem_id', $subsistem_id)->get();
+        $subsistem = sub_swbs::with('swbs')->where('id', $subsistem_id)->get();
 
         // dd($data);
 
