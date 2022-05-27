@@ -19,8 +19,10 @@ return new class extends Migration
             $table->integer('subsistem_id');
             $table->integer('komponen_id');
             $table->string('kode_fungsi');
-            $table->string('uraian_fungsi');
+            $table->string('uraian_fungsi')->nullable();
+
             $table->string('kode_kegagalan_fungsi');
+            $table->string('kegagalan_fungsi');
             $table->string('uraian_kegagalan_fungsi');
             $table->softDeletes();
             $table->timestamps();

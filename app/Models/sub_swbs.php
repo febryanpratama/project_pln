@@ -16,4 +16,8 @@ class sub_swbs extends Model
 
         return $this->belongsTo(swbs::class, 'swbs_id', 'id');
     }
+
+    public function komponen(){
+        return $this->hasMany(Swbs_komponen::class, 'subsistem_id', 'id');
+    }
 }

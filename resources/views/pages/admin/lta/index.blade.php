@@ -15,7 +15,7 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
-                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Komponen</a>
+                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Pertanyaan LTA</a>
             </div>
             <!--end::Actions-->
         </div>
@@ -25,13 +25,13 @@
     {{-- MODAL--}}
     <div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-900px">
+        <div class="modal-dialog modal-dialog-centered mw-500px">
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Modal header-->
                 <div class="modal-header">
                     <!--begin::Modal title-->
-                    <h2>Tambah Komponen</h2>
+                    <h2>Tambah Pertanyaan LTA</h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -50,42 +50,13 @@
                 <!--begin::Modal body-->
                 <div class="modal-body">
                     <!--begin::Stepper-->
-                    <form action="{{ url('swbs/komponen') }}" method="POST">
+                    <form action="" action="{{ url('lta') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {{-- {{ dd($subsistem) }} --}}
-                                    <label for="" class="control-label"><h5>Nama Sub Sistem</h5></label>
-                                    <select name="subsistem_id" class="form-control @error('subsistem_id')
-                                    @enderror">
-                                        <option value=""> == Pilih == </option>
-                                        @foreach ($subsistem as $item=>$key)
-                                            <option value="{{ $key->id }}">{{ $key->nama_sub_sistem }} - {{ $key->swbs->kode_sistem }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('subsistem_id')
-                                    <div class="text-muted text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="" class="control-label"><h5>Nama Komponen</h5></label>
-                                    <input type="text" name="nama_komponen" class="form-control @error('nama_komponen')
-                                        is-invalid
-                                    @enderror" value="{{ old('nama_komponen') }}" placeholder="Masukkan Nama Komponen" required>
-                                </div>
-                                @error('nama_komponen')
-                                    <div class="text-muted text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mt-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="" class="control-label"><h5>Uraian Fungsi</h5></label>
-                                    <textarea name="uraian_fungsi" class="form-control" id="" cols="30" rows="5"></textarea>
+                                    <label for="" class="control-label">Pertanyaan</label>
+                                    <textarea name="pertanyaan" class="form-control" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -135,23 +106,16 @@
                                 <table id="kt_datatable_example_1" class="table table-row-bordered gy-5">
                                     <thead class="text-center">
                                         <tr class="fw-bold fs-6 text-muted">
-                                            <th>Nama Sub Sistem</th>
-                                            <th>Nama Komponen</th>
-                                            <th>Kode Kode Komponen</th>
+                                            <th>Pertanyaan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
                                         <tr>
-                                            <td>{{ $key->subsistem->nama_sub_sistem }}</td>
-                                            <td>{{ $key->nama_komponen }}</td>
-                                            <td>{{ $key->kode_komponen }}</td>
+                                            <td>{{ $key->pertanyaan }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
-                                                    {{-- <button class="btn btn-info text-white m-2">
-                                                        <a href="{{ url('swbs/'. $key->id .'/sub-sistem/'.$key->id) }}" class="text-white">Detail komponen</a>
-                                                    </button> --}}
                                                     <button class="btn btn-warning text-white m-2">
                                                         <a href="#" class="text-white">Edit</a>
                                                     </button>
@@ -165,9 +129,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Nama Sistem</th>
-                                            <th>Kode Sistem</th>
-                                            <th>Nama Sub Sistem</th>
+                                            <th>Pertanyaan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LtaController;
+use App\Http\Controllers\SwbsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/lta', [LtaController::class, 'api1']);
+
+Route::post('/sistem', [SwbsController::class, 'ApiNamaSistem']);

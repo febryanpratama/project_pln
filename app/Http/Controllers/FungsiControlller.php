@@ -24,11 +24,12 @@ class FungsiControlller extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'komponen_id' => 'required|numeric|exists:swbs_komponens,id',
-            'uraian_fungsi' => 'required',
+            'kegagalan_fungsi' => 'required',
             'uraian_kegagalan_fungsi' => 'required',
         ]);
 
         if($validator->fails()){
+            dd($validator);
             return back()->withErrors($validator)->with('error', 'Gagal Menambahkan Data');
         }
         // dd($request->all());

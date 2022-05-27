@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class swbs extends Model
+class Lta_proses extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function sub_swbs(){
-        return $this->hasMany(sub_swbs::class, 'swbs_id', 'id');
+    public function komponen(){
+        return $this->belongsTo(Swbs_komponen::class,'komponen_id', 'id');
     }
 }

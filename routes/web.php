@@ -3,8 +3,10 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DetectionController;
+use App\Http\Controllers\FmeaController;
 use App\Http\Controllers\FungsiControlller;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\LtaController;
 use App\Http\Controllers\OccurenceController;
 use App\Http\Controllers\RpnController;
 use App\Http\Controllers\SwbsController;
@@ -91,6 +93,33 @@ Route::controller(FungsiControlller::class)->group(function(){
         Route::post('/', 'store');
         Route::post('/sub-sistem', 'subSistem');
         Route::post('/komponen', 'komponen');
+    });
+});
+
+Route::controller(LtaController::class)->group(function(){
+    Route::prefix('lta')->group(function(){
+        Route::get('/', 'index');
+        // Route::get('/{swbs_id}', 'detail');
+        // Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
+        Route::post('/', 'store');
+        // Route::post('/sub-sistem', 'subSistem');
+        // Route::post('/komponen', 'komponen');
+    });
+
+    Route::prefix('lta-proses')->group(function(){
+        Route::get('/', 'ltaIndex');
+        // Route::get('/{swbs_id}', 'detail');
+        // Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
+        Route::post('/', 'ltastore');
+        // Route::post('/sub-sistem', 'subSistem');
+        // Route::post('/komponen', 'komponen');
+    });
+});
+
+Route::controller(FmeaController::class)->group(function(){
+    Route::prefix('fmea')->group(function(){
+        Route::get('/', 'index');
+        Route::post('/', 'store');
     });
 });
 

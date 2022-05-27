@@ -70,8 +70,8 @@
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <label for="" class="control-label"><h5>Uraian Fungsi</h5></label>
-                                    <textarea name="uraian_fungsi" class="form-control" cols="30" rows="5" required></textarea>
+                                    <label for="" class="control-label"><h5>Kegagalan Fungsi</h5></label>
+                                    <textarea name="kegagalan_fungsi" class="form-control" cols="30" rows="5" required></textarea>
                                     @error('uraian_fungsi')
                                         <div class="text-muted text-danger">{{ $message }}</div>
                                     @enderror
@@ -143,23 +143,32 @@
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
-                                        <tr>
-                                            <td>{{ $key->swbs->kode_sistem }}</td>
-                                            <td>{{ $key->komponen->kode_komponen }}</td>
-                                            <td>{{ $key->uraian_fungsi }}</td>
-                                            <td>{{ $key->kode_kegagalan_fungsi }}</td>
-                                            <td>{{ $key->uraian_kegagalan_fungsi }}</td>
-                                            <td>
-                                                <div class="d-flex justify-content-center text-white">
-                                                    <button class="btn btn-warning text-white m-2">
-                                                        <a href="#" class="text-white">Edit</a>
-                                                    </button>
-                                                    <button class="btn btn-danger text-white m-2">
-                                                        <a href="#" class="text-white">Hapus</a>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            @if (empty($key->komponen))
+                                            
+                                            @endif
+                                            <tr>
+                                                <td>{{ $key->swbs->kode_sistem }}</td>
+                                                <td>
+                                                    @if (empty($key->komponen->kode_komponen))
+                                                        Null Kode
+                                                        @else
+                                                        {{ $key->komponen->kode_komponen }}
+                                                    @endif
+                                                </td>
+                                                <td>{{ $key->uraian_fungsi }}</td>
+                                                <td>{{ $key->kode_kegagalan_fungsi }}</td>
+                                                <td>{{ $key->uraian_kegagalan_fungsi }}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center text-white">
+                                                        <button class="btn btn-warning text-white m-2">
+                                                            <a href="#" class="text-white">Edit</a>
+                                                        </button>
+                                                        <button class="btn btn-danger text-white m-2">
+                                                            <a href="#" class="text-white">Hapus</a>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>

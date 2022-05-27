@@ -21,4 +21,6 @@ class Fungsi_sistem extends Model
     public function subswbs(){
         return $this->belongsTo(sub_swbs::class, 'subsistem_id', 'id');
     }
+
+    
 }

@@ -22,7 +22,7 @@ class SwbsController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'nama_sistem' => 'required',
-            'kode_sistem' => 'required|unique:swbs,kode_sistem',
+            'kode_sistem' => 'required',
         ]);
 
         if($validator->fails()){
@@ -41,6 +41,8 @@ class SwbsController extends Controller
         $title = "Detail System Work Breakdown Structure List";
         $swbs = swbs::get();
         $data = sub_swbs::with('swbs')->where('swbs_id', $swbs_id)->get();
+        // $data = swbs::with('sub_swbs')->where('kode_sistem', 'D')->get();
+        // dd($data);
         // dd($data);
         return view('pages.admin.swbs.detail', compact(['title', 'swbs', 'data']));
     }
@@ -81,10 +83,14 @@ class SwbsController extends Controller
             return back()->withErrors($validator)->with('error', 'Gagal menambahkan Data');
         }
         $data = $request->all();
-        $count = Swbs_komponen::where('subsistem_id', $data['subsistem_id'])->count('id');
+        // dd($data);
         $swbs = sub_swbs::with('swbs')->where('id', $data['subsistem_id'])->first();
+        // dd($swbs->swbs);
+        $count = Swbs_komponen::where('kode', $swbs->swbs->kode_sistem)->count('id');
 
         // dd($swbs->swbs->kode_sistem);
+        $data['swbs_id'] = $swbs->swbs_id;
+        $data['kode'] = $swbs->swbs->kode_sistem;
         $data['kode_komponen'] = $swbs->swbs->kode_sistem.".".($count+1);
 
         // dd($data);
@@ -94,5 +100,16 @@ class SwbsController extends Controller
         
         return back()->with('success', 'Berhasil Menambahkan Data');
 
+    }
+
+    public function ApiNamaSistem(Request $request){
+        // dd($request->all());
+
+        // $sistem = Swbs::where('id', $request->swbs_id)->get();
+        $data = sub_swbs::with('komponen')->where('swbs_id', $request->swbs_id)->get();
+
+        // dd($subsistem);
+
+        return response()->json(['status' => 'true', 'messages' => 'Berhasil mendapatkan data','data' => $data]);
     }
 }

@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('swbs_komponens', function (Blueprint $table) {
+        Schema::create('lta_proses', function (Blueprint $table) {
             $table->id();
-            $table->integer('swbs_id')->nullable();
-            $table->integer('subsistem_id');
-            $table->string('kode');
-            $table->string('nama_komponen');
-            $table->string('kode_komponen');
-            $table->string('uraian_fungsi');
+            $table->integer('komponen_id');
+            $table->string('evident')->nullable();
+            $table->string('safety')->nullable();
+            $table->string('outage')->nullable();
+            $table->string('category');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('swbs_komponens');
+        Schema::dropIfExists('lta_proses');
     }
 };

@@ -15,7 +15,7 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
-                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Komponen</a>
+                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Pertanyaan LTA</a>
             </div>
             <!--end::Actions-->
         </div>
@@ -25,13 +25,13 @@
     {{-- MODAL--}}
     <div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-900px">
+        <div class="modal-dialog modal-dialog-centered mw-500px">
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Modal header-->
                 <div class="modal-header">
                     <!--begin::Modal title-->
-                    <h2>Tambah Komponen</h2>
+                    <h2>Tambah Pertanyaan LTA</h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -50,42 +50,59 @@
                 <!--begin::Modal body-->
                 <div class="modal-body">
                     <!--begin::Stepper-->
-                    <form action="{{ url('swbs/komponen') }}" method="POST">
+                    <form action="" action="{{ url('lta') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    {{-- {{ dd($subsistem) }} --}}
-                                    <label for="" class="control-label"><h5>Nama Sub Sistem</h5></label>
-                                    <select name="subsistem_id" class="form-control @error('subsistem_id')
-                                    @enderror">
-                                        <option value=""> == Pilih == </option>
-                                        @foreach ($subsistem as $item=>$key)
-                                            <option value="{{ $key->id }}">{{ $key->nama_sub_sistem }} - {{ $key->swbs->kode_sistem }}</option>
+                                    <label for="" class="control-label">Nama Sistem</label>
+                                    <select name="swbs_id" id="swbs" class="form-control">
+                                        <option value="" disabled>== PILIH ==</option>
+                                        @foreach ($sistem as $item=>$key)
+                                            <option value="{{ $key->id }}">{{ $key->nama_sistem }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('subsistem_id')
-                                    <div class="text-muted text-danger">{{ $message }}</div>
-                                @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12 mt-3">
                                 <div class="form-group">
-                                    <label for="" class="control-label"><h5>Nama Komponen</h5></label>
-                                    <input type="text" name="nama_komponen" class="form-control @error('nama_komponen')
-                                        is-invalid
-                                    @enderror" value="{{ old('nama_komponen') }}" placeholder="Masukkan Nama Komponen" required>
+                                    <label for="" class="control-label">Nama Komponen</label>
+                                    <select name="komponen_id" id="list-3"  class="form-control">
+                                        
+                                    </select>
                                 </div>
-                                @error('nama_komponen')
-                                    <div class="text-muted text-danger">{{ $message }}</div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mt-4">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="" class="control-label"><h5>Uraian Fungsi</h5></label>
-                                    <textarea name="uraian_fungsi" class="form-control" id="" cols="30" rows="5"></textarea>
+                                    <label for="" class="control-label">Severity</label>
+                                    <select name="severity_id" id="" class="form-control">
+                                        <option value="" disabled> == PILIH == </option>
+                                        @foreach ($severity as $item=>$sv)
+                                            <option value="{{ $sv->id }}">{{ $sv->nama_kriteria }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Occurence</label>
+                                    <select name="occurence_id" id="" class="form-control">
+                                        <option value="" disabled> == PILIH == </option>
+                                        @foreach ($occurence as $item=>$oc)
+                                            <option value="{{ $oc->id }}">{{ $oc->nama_occurence }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Detection</label>
+                                    <select name="detection_id" id="" class="form-control">
+                                        <option value="" disabled> == PILIH == </option>
+                                        @foreach ($detection as $item=>$dt)
+                                            <option value="{{ $dt->id }}">{{ $dt->nama_detection }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -135,39 +152,36 @@
                                 <table id="kt_datatable_example_1" class="table table-row-bordered gy-5">
                                     <thead class="text-center">
                                         <tr class="fw-bold fs-6 text-muted">
-                                            <th>Nama Sub Sistem</th>
+                                            <th>Nama Sistem</th>
                                             <th>Nama Komponen</th>
-                                            <th>Kode Kode Komponen</th>
-                                            <th>Aksi</th>
+                                            <th>Fungsi</th>
+                                            <th>Kegagalan Fungsi</th>
+                                            <th>Uraian Kegagalan Fungsi</th>
+                                            <th>S</th>
+                                            <th>O</th>
+                                            <th>D</th>
+                                            <th>RPN</th>
+                                            {{-- <th>Aksi</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
                                         <tr>
-                                            <td>{{ $key->subsistem->nama_sub_sistem }}</td>
-                                            <td>{{ $key->nama_komponen }}</td>
-                                            <td>{{ $key->kode_komponen }}</td>
-                                            <td>
-                                                <div class="d-flex justify-content-center text-white">
-                                                    {{-- <button class="btn btn-info text-white m-2">
-                                                        <a href="{{ url('swbs/'. $key->id .'/sub-sistem/'.$key->id) }}" class="text-white">Detail komponen</a>
-                                                    </button> --}}
-                                                    <button class="btn btn-warning text-white m-2">
-                                                        <a href="#" class="text-white">Edit</a>
-                                                    </button>
-                                                    <button class="btn btn-danger text-white m-2">
-                                                        <a href="#" class="text-white">Hapus</a>
-                                                    </button>
-                                                </div>
-                                            </td>
+                                            <td>{{ $key->swbs->nama_sistem }}</td>
+                                            <td>{{ $key->komponen->nama_komponen }}</td>
+                                            <td>{{ $key->komponen->uraian_fungsi }}</td>
+                                            <td>{{ $key->fungsi->kegagalan_fungsi }}</td>
+                                            <td>{{ $key->fungsi->uraian_kegagalan_fungsi }}</td>
+                                            <td>{{ $key->severity->rating_kriteria }}</td>
+                                            <td>{{ $key->occurence->rating_occurence }}</td>
+                                            <td>{{ $key->detection->rating_detection }}</td>
+                                            <td>{{ \App\Helpers\Helper::totalRpn($key->severity->id, $key->occurence->id, $key->detection->id) }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Nama Sistem</th>
-                                            <th>Kode Sistem</th>
-                                            <th>Nama Sub Sistem</th>
+                                            <th>Pertanyaan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -190,8 +204,44 @@
     </div>
 @endsection
 
+
 @section('script')
     <script>
         $("#kt_datatable_example_1").DataTable();
     </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+
+$('#swbs').on('change', function() {
+    $('#list-3').html('')
+    var swbs_id = this.value
+    $.ajax({
+        url: '{{ url("api/sistem") }}',
+        type: 'post',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        },
+        data: {
+            'swbs_id' : swbs_id
+        },
+        success: (data)=>{
+            var dataSistem = data.data
+            $.each(dataSistem, function(index){
+                console.log(dataSistem[index].komponen);
+
+                var komponen = dataSistem[index].komponen
+                $.each(komponen, function(i){
+                    $('#list-3').append(`
+                        <option value="`+komponen[i].id+`">`+komponen[i].nama_komponen+`</option>
+                        `)
+                    })
+                })
+            }
+    })
+})
+</script>
 @endsection
+
