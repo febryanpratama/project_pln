@@ -373,6 +373,18 @@
                                     </select>
                                 </div>
                             `)
+
+                            $('#list-8').append(`
+                                <div class="form-group">
+                                    <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                    <select name="category" id="pertanyaan_7" class="form-control">
+                                        <option value=""> == Pilih == </option>
+                                        <option value="C.D"> Condition Directed </option>
+                                        <option value="T.D"> Time Directerd </option>
+                                        <option value="F.F"> Finding Failure </option>
+                                    </select>
+                                </div>
+                            `)
                             }
                         })
                             })
@@ -449,6 +461,17 @@
                                     </select>
                                 </div>
                             `)
+                            $('#list-8').append(`
+                                <div class="form-group">
+                                    <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                    <select name="category" id="pertanyaan_7" class="form-control">
+                                        <option value=""> == Pilih == </option>
+                                        <option value="C.D"> Condition Directed </option>
+                                        <option value="T.D"> Time Directerd </option>
+                                        <option value="F.F"> Finding Failure </option>
+                                    </select>
+                                </div>
+                            `)
                             }
                         })
                                     })
@@ -498,6 +521,49 @@
                                                     </select>
                                                 </div>
                                             `)
+
+                                            $('#pertanyaan_6').on('change', function() {
+                                                $('#list-7').html('');
+                                                $('#list-8').html('');
+                                                var id6 = this.value
+                                                if (id6 == 1) {
+                                                    $('#list-7').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                        <select name="category" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="C.D"> Condition Directed </option>
+                                                            <option value="T.D"> Time Directerd </option>
+                                                            <option value="F.F"> Finding Failure </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+                                                }else{
+                                                    $('#list-7').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Dapatkah Memodifikasi menghilangkan mode kerusakan</label>
+                                                        <select name="pertanyaan_7" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="1"> Ya </option>
+                                                            <option value="2"> Tidak </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+
+                                                $('#list-8').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                        <select name="category" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="C.D"> Condition Directed </option>
+                                                            <option value="T.D"> Time Directerd </option>
+                                                            <option value="F.F"> Finding Failure </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+                                        }
+                                    })
+                                            // TENTUKAN TINDAKAN
                                         }else{
                                             $('#list-6').append(`
                                                 <div class="form-group">
@@ -509,6 +575,46 @@
                                                     </select>
                                                 </div>
                                             `)
+                                            $('#pertanyaan_6').on('change', function() {
+                                                    $('#list-7').html('');
+                                                    $('#list-8').html('');
+                                                    var id6 = this.value
+                                                    if (id6 == 1) {
+                                                        $('#list-7').append(`
+                                                        <div class="form-group">
+                                                            <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                            <select name="category" id="pertanyaan_7" class="form-control">
+                                                                <option value=""> == Pilih == </option>
+                                                                <option value="C.D"> Condition Directed </option>
+                                                                <option value="T.D"> Time Directerd </option>
+                                                                <option value="F.F"> Finding Failure </option>
+                                                            </select>
+                                                        </div>
+                                                    `)
+                                                    }else{
+                                                        $('#list-7').append(`
+                                                        <div class="form-group">
+                                                            <label for="" class="control-label mb-3">Dapatkah Memodifikasi menghilangkan mode kerusakan</label>
+                                                            <select name="pertanyaan_7" id="pertanyaan_7" class="form-control">
+                                                                <option value=""> == Pilih == </option>
+                                                                <option value="1"> Ya </option>
+                                                                <option value="2"> Tidak </option>
+                                                            </select>
+                                                        </div>
+                                                    `)
+                                                    $('#list-8').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                        <select name="category" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="C.D"> Condition Directed </option>
+                                                            <option value="T.D"> Time Directerd </option>
+                                                            <option value="F.F"> Finding Failure </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+                                            }
+                                        })
                                         }
                                     })
 
@@ -524,6 +630,48 @@
                                                 </select>
                                             </div>
                                         `)
+
+                                        $('#pertanyaan_6').on('change', function() {
+                                                $('#list-7').html('');
+                                                $('#list-8').html('');
+                                                var id6 = this.value
+                                                if (id6 == 1) {
+                                                    $('#list-7').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                        <select name="category" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="C.D"> Condition Directed </option>
+                                                            <option value="T.D"> Time Directerd </option>
+                                                            <option value="F.F"> Finding Failure </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+                                                }else{
+                                                    $('#list-7').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Dapatkah Memodifikasi menghilangkan mode kerusakan</label>
+                                                        <select name="pertanyaan_7" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="1"> Ya </option>
+                                                            <option value="2"> Tidak </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+
+                                                $('#list-8').append(`
+                                                    <div class="form-group">
+                                                        <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                                        <select name="category" id="pertanyaan_7" class="form-control">
+                                                            <option value=""> == Pilih == </option>
+                                                            <option value="C.D"> Condition Directed </option>
+                                                            <option value="T.D"> Time Directerd </option>
+                                                            <option value="F.F"> Finding Failure </option>
+                                                        </select>
+                                                    </div>
+                                                `)
+                                        }
+                                    })
                                     }
                                 })
                                     // else pertanyaan 4
@@ -579,32 +727,32 @@
                                     </div>
                                 `)
                                 $('#pertanyaan_6').on('change', function() {
-                            $('#list-7').html('');
-                            $('#list-8').html('');
-                            var id6 = this.value
-                            if (id6 == 1) {
-                                $('#list-7').append(`
-                                <div class="form-group">
-                                    <label for="" class="control-label mb-3">Tentukan Tindakan</label>
-                                    <select name="category" id="pertanyaan_7" class="form-control">
-                                        <option value=""> == Pilih == </option>
-                                        <option value="C.D"> Condition Directed </option>
-                                        <option value="T.D"> Time Directerd </option>
-                                        <option value="F.F"> Finding Failure </option>
-                                    </select>
-                                </div>
-                            `)
-                            }else{
-                                $('#list-7').append(`
-                                <div class="form-group">
-                                    <label for="" class="control-label mb-3">Dapatkah Memodifikasi menghilangkan mode kerusakan</label>
-                                    <select name="pertanyaan_7" id="pertanyaan_7" class="form-control">
-                                        <option value=""> == Pilih == </option>
-                                        <option value="1"> Ya </option>
-                                        <option value="2"> Tidak </option>
-                                    </select>
-                                </div>
-                            `)
+                                    $('#list-7').html('');
+                                    $('#list-8').html('');
+                                    var id6 = this.value
+                                    if (id6 == 1) {
+                                        $('#list-7').append(`
+                                        <div class="form-group">
+                                            <label for="" class="control-label mb-3">Tentukan Tindakan</label>
+                                            <select name="category" id="pertanyaan_7" class="form-control">
+                                                <option value=""> == Pilih == </option>
+                                                <option value="C.D"> Condition Directed </option>
+                                                <option value="T.D"> Time Directerd </option>
+                                                <option value="F.F"> Finding Failure </option>
+                                            </select>
+                                        </div>
+                                    `)
+                                    }else{
+                                        $('#list-7').append(`
+                                        <div class="form-group">
+                                            <label for="" class="control-label mb-3">Dapatkah Memodifikasi menghilangkan mode kerusakan</label>
+                                            <select name="pertanyaan_7" id="pertanyaan_7" class="form-control">
+                                                <option value=""> == Pilih == </option>
+                                                <option value="1"> Ya </option>
+                                                <option value="2"> Tidak </option>
+                                            </select>
+                                        </div>
+                                    `)
                             }
                         })
                             }else{
