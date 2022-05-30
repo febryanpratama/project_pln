@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('swbs_id');
             $table->string('nama_sub_sistem');
+            $table->string('kode_sistem');
             $table->softDeletes();
             $table->timestamps();
         });

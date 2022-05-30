@@ -14,7 +14,7 @@ class SwbsController extends Controller
     //
     public function index(){
         $title = "System Work Breakdown Structure List";
-        $data = swbs::orderBy('kode_sistem', 'asc')->get();
+        $data = swbs::get();
         // dd($data);
         return view('pages.admin.swbs.index', compact(['title', 'data']));
     }
@@ -22,7 +22,7 @@ class SwbsController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'nama_sistem' => 'required',
-            'kode_sistem' => 'required',
+            // 'kode_sistem' => 'required',
         ]);
 
         if($validator->fails()){
@@ -30,7 +30,6 @@ class SwbsController extends Controller
         }
 
         $data = $request->all();
-        $data['kode_sistem'] = strtoupper($request['kode_sistem']);
         swbs::create($data);
 
         return back()->with('success', 'Berhasil Menambahkan Data');
@@ -51,12 +50,16 @@ class SwbsController extends Controller
         $validator = Validator::make($request->all(), [
             'swbs_id' => 'required|numeric|exists:swbs,id',
             'nama_sub_sistem' => 'required',
+            'kode_sistem' => 'required'
         ]);
 
         if($validator->fails()){
             return back()->withErrors($validator)->with('error', 'Gagal menambahkan Data');
         }
         $data = $request->all();
+        $data['kode_sistem'] = strtoupper($request['kode_sistem']);
+
+        // dd($data);
         sub_swbs::create($data);
 
         return back()->with('success', 'Berhasil Menambahkan Data');
@@ -85,13 +88,13 @@ class SwbsController extends Controller
         $data = $request->all();
         // dd($data);
         $swbs = sub_swbs::with('swbs')->where('id', $data['subsistem_id'])->first();
-        // dd($swbs->swbs);
-        $count = Swbs_komponen::where('kode', $swbs->swbs->kode_sistem)->count('id');
+        // dd($swbs);
+        $count = Swbs_komponen::where('kode', $swbs->kode_sistem)->count('id');
 
         // dd($swbs->swbs->kode_sistem);
         $data['swbs_id'] = $swbs->swbs_id;
-        $data['kode'] = $swbs->swbs->kode_sistem;
-        $data['kode_komponen'] = $swbs->swbs->kode_sistem.".".($count+1);
+        $data['kode'] = $swbs->kode_sistem;
+        $data['kode_komponen'] = $swbs->kode_sistem.".".($count+1);
 
         // dd($data);
         // dd($request->all());

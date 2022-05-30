@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('swbs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_sistem');
-            $table->string('kode_sistem');
             $table->softDeletes();
             $table->timestamps();
         });

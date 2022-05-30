@@ -137,6 +137,7 @@
                                             <th>Kode Deskripsi Fungsi</th>
                                             <th>Uraian Fungsi</th>
                                             <th>Kode Kegagalan Fungsi</th>
+                                            <th>Kegagalan Fungsi</th>
                                             <th>Uraian Kegagalan Fungsi</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -155,8 +156,9 @@
                                                         {{ $key->komponen->kode_komponen }}
                                                     @endif
                                                 </td>
-                                                <td>{{ $key->uraian_fungsi }}</td>
+                                                <td>{{ $key->komponen->uraian_fungsi }}</td>
                                                 <td>{{ $key->kode_kegagalan_fungsi }}</td>
+                                                <td>{{ $key->kegagalan_fungsi }}</td>
                                                 <td>{{ $key->uraian_kegagalan_fungsi }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center text-white">
@@ -177,6 +179,7 @@
                                             <th>Kode Deskripsi Fungsi</th>
                                             <th>Uraian Fungsi</th>
                                             <th>Kode Kegagalan Fungsi</th>
+                                            <th>Kegagalan Fungsi</th>
                                             <th>Uraian Kegagalan Fungsi</th>
                                             <th>Aksi</th>
                                         </tr>

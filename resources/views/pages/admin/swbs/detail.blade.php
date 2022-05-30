@@ -53,13 +53,13 @@
                     <form action="{{ url('swbs/sub-sistem') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4 mt-5">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Nama Sistem</h5></label>
                                     <select name="swbs_id" class="form-control">
                                         <option value=""> == Pilih == </option>
                                         @foreach ($swbs as $item=>$key)
-                                            <option value="{{ $key->id }}">{{ $key->nama_sistem }} - {{ $key->kode_sistem }}</option>
+                                            <option value="{{ $key->id }}">{{ $key->nama_sistem }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -67,12 +67,23 @@
                                     <div class="text-muted text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4 mt-5">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Nama Sub Sistem</h5></label>
                                     <input type="text" name="nama_sub_sistem" class="form-control @error('nama_sub_sistem')
                                         is-invalid
                                     @enderror" value="{{ old('nama_sub_sistem') }}" placeholder="Masukkan Nama Sub Sistem" required>
+                                </div>
+                                @error('nama_sub_sistem')
+                                    <div class="text-muted text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-4 mt-5">
+                                <div class="form-group">
+                                    <label for="" class="control-label"><h5>Kode Sistem</h5></label>
+                                    <input type="text" name="kode_sistem" class="form-control @error('kode_sistem')
+                                        is-invalid
+                                    @enderror" value="{{ old('kode_sistem') }}" placeholder="Masukkan Nama Kode Sistem" required>
                                 </div>
                                 @error('nama_sub_sistem')
                                     <div class="text-muted text-danger">{{ $message }}</div>
@@ -136,7 +147,7 @@
                                         @foreach ($data as $item=>$key)
                                         <tr>
                                             <td>{{ $key->swbs->nama_sistem }}</td>
-                                            <td>{{ $key->swbs->kode_sistem }}</td>
+                                            <td>{{ $key->kode_sistem }}</td>
                                             <td>{{ $key->nama_sub_sistem }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">

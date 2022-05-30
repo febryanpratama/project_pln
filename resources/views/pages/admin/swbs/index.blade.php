@@ -25,7 +25,7 @@
     {{-- MODAL--}}
     <div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-900px">
+        <div class="modal-dialog modal-dialog-centered mw-500px">
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Modal header-->
@@ -53,7 +53,7 @@
                     <form action="" action="{{ url('swbs') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Nama Sistem</h5></label>
                                     <input type="text" name="nama_sistem" class="form-control @error('nama_sistem')
@@ -61,17 +61,6 @@
                                     @enderror" value="{{ old('nama_sistem') }}"  placeholder="Masukkan Nama Sistem" required>
                                 </div>
                                 @error('nama_sistem')
-                                    <div class="text-muted text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="" class="control-label"><h5>Kode Sistem</h5></label>
-                                    <input type="text" name="kode_sistem" class="form-control @error('kode_sistem')
-                                        is-invalid
-                                    @enderror" value="{{ old('kode_sistem') }}" placeholder="Masukkan Kode Sistem. Ex A - Z" required>
-                                </div>
-                                @error('kode_sistem')
                                     <div class="text-muted text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -123,7 +112,6 @@
                                     <thead class="text-center">
                                         <tr class="fw-bold fs-6 text-muted">
                                             <th>Nama Sistem</th>
-                                            <th>Kode Sistem</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -131,7 +119,6 @@
                                         @foreach ($data as $item=>$key)
                                         <tr>
                                             <td>{{ $key->nama_sistem }}</td>
-                                            <td>{{ $key->kode_sistem }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     <button class="btn btn-info text-white m-2">
@@ -148,10 +135,9 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    <tfoot class="text-center">
                                         <tr>
-                                            <th>Nama Occurence</th>
-                                            <th>Rating Occurence</th>
+                                            <th>Nama Sistem</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
