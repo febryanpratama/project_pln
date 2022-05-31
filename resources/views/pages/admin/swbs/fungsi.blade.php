@@ -147,8 +147,17 @@
                                             @if (empty($key->komponen))
                                             
                                             @endif
+                                            @if (empty($key->subswbs))
+                                                
+                                            @endif
                                             <tr>
-                                                <td>{{ $key->swbs->kode_sistem }}</td>
+                                                <td>
+                                                    @if (empty($key->subswbs->kode_sistem))
+                                                        Null Kode
+                                                        @else
+                                                        {{ $key->subswbs->kode_sistem }}
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if (empty($key->komponen->kode_komponen))
                                                         Null Kode

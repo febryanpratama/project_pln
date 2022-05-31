@@ -16,7 +16,7 @@ class FmeaController extends Controller
     //
     public function index(){
         $title = "Failur Mode Effect Analysis";
-        $data = Fmea::with('swbs', 'komponen', 'severity', 'occurence', 'detection','fungsi')->get();
+        $data = Fmea::with('swbs','subswbs', 'komponen', 'severity', 'occurence', 'detection','fungsi')->get();
         $sistem = swbs::get();
         $severity = Kriteria::get();
         $occurence = Occurence::get();

@@ -18,6 +18,9 @@ class Fmea extends Model
     public function komponen(){
         return $this->belongsTo(Swbs_komponen::class, 'komponen_id', 'id');
     }
+    public function subswbs(){
+        return $this->belongsTo(sub_swbs::class, 'swbs_id', 'swbs_id');
+    }
 
     
     public function severity(){

@@ -166,8 +166,16 @@
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
+                                        @if (empty($key->swbs))
+                                                
+                                            @endif
                                         <tr>
-                                            <td>{{ $key->swbs->nama_sistem }}</td>
+                                            <td>@if (empty($key->swbs->nama_sistem))
+                                                    Null Kode
+                                                    @else
+                                                    {{ $key->swbs->nama_sistem }}
+                                                @endif
+                                            </td>
                                             <td>{{ $key->komponen->nama_komponen }}</td>
                                             <td>{{ $key->komponen->uraian_fungsi }}</td>
                                             <td>{{ $key->fungsi->kegagalan_fungsi }}</td>
