@@ -28,6 +28,27 @@ class DetectionController extends Controller
         $data = $request->all();
         Detection::create($data);
         
-        return back()->with('success', 'Berhasil Menambahkan Kriteria');
+        return back()->with('success', 'Berhasil Menambahkan Detection');
     }
+
+    public function update(Request $request){
+        // dd($request->all());
+        $data = $request->except('_token', 'detection_id');
+
+        Detection::where('id', $request['detection_id'])->update($data);
+
+        return back()->with('success', 'Berhasil Mengubah Detection');
+
+    }
+
+    public function destroy(Request $request){
+        // dd($request->all());
+        $data = $request->except('_token', 'detection_id');
+
+        Detection::where('id', $request['detection_id'])->delete();
+
+        return back()->with('success', 'Berhasil Menghapus Detection');
+
+    }
+
 }

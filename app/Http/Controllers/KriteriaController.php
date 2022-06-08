@@ -31,4 +31,16 @@ class KriteriaController extends Controller
 
         // dd($request->all());
     }
+    public function update(Request $request){
+        $data = $request->except('_token', 'severity_id');
+
+        Kriteria::where('id', $request->severity_id)->update($data);
+        return back()->with('success', 'Berhasil Mengubah Kriteria');
+    }
+    
+    public function destroy(Request $request){
+        Kriteria::where('id', $request->severity_id)->delete();
+        return back()->with('success', 'Berhasil Menghapus Kriteria');
+
+    }
 }

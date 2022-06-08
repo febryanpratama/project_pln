@@ -45,6 +45,8 @@ Route::controller(BarangController::class)->group(function(){
     Route::prefix('barang')->group(function(){
         Route::get('/', 'index')->name('data.barang');
         Route::post('/', 'store');
+        Route::post('/edit', 'update')->name('barang.update');
+        Route::post('/destory', 'destroy')->name('barang.destroy');
     });
 });
 
@@ -52,18 +54,24 @@ Route::controller(KriteriaController::class)->group(function(){
     Route::prefix('kriteria')->group(function(){
         Route::get('/', 'index')->name('data.kriteria');
         Route::post('/', 'store');
+        Route::post('/update', 'update')->name('severity.update');
+        Route::post('/destroy', 'destroy')->name('severity.destroy');
+
     });
 });
 Route::controller(OccurenceController::class)->group(function(){
     Route::prefix('occurence')->group(function(){
         Route::get('/', 'index');
         Route::post('/', 'store');
+        Route::post('/update', 'update')->name('occurence.update');
     });
 });
 Route::controller(DetectionController::class)->group(function(){
     Route::prefix('detection')->group(function(){
         Route::get('/', 'index');
         Route::post('/', 'store');
+        Route::post('/update', 'update')->name('detection.update');
+        Route::post('/destroy', 'destroy')->name('detection.destroy');
     });
 });
 
@@ -81,8 +89,12 @@ Route::controller(SwbsController::class)->group(function(){
         Route::get('/{swbs_id}', 'detail');
         Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
         Route::post('/', 'store');
+        Route::post('/update', 'updateSwbs')->name('swbs.update');
+        Route::post('/destroy', 'destroySwbs')->name('swbs.destroy');
         Route::post('/sub-sistem', 'subSistem');
-        Route::post('/komponen', 'komponen');
+        Route::post('/sub-sistem/edit', 'editsubSistem');
+        Route::post('/komponen', 'komponen'); 
+        Route::post('/komponen/edit', 'editkomponen'); 
     });
 });
 

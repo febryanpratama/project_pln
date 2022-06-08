@@ -40,4 +40,29 @@ class BarangController extends Controller
             return back()->with('success', 'Berhasil Menambahkan Data Barang');
         }
     }
+
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        $data = $request->except('_token', 'barang_id');
+        if ($request->hasFile('path_barang')) {
+            # code...
+            $depan = $request['path_barang'];
+            $fileName = 'images/foto_barang/'.md5($depan->getClientOriginalName().time()).".".$depan->getClientOriginalExtension();
+            $depan->move('./uploads/images/foto_barang/', $fileName);
+
+            $data['path_barang'] = $fileName;
+
+        }
+
+        Barang::where('id', $request['barang_id'])->update($data);
+
+        return back()->with('success', 'Berhasil Mengubah Data Barang');
+    }
+    
+    public function destroy(Request $request){
+        Barang::where('id', $request['barang_id'])->delete();
+        return back()->with('success', 'Berhasil Menghapus Data Barang');
+
+    }
 }

@@ -15,7 +15,7 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
-                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Kriteria</a>
+                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Severity</a>
             </div>
             <!--end::Actions-->
         </div>
@@ -135,14 +135,135 @@
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     <button class="btn btn-warning text-white m-2">
-                                                        <a href="#" class="text-white">Edit</a>
+                                                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#edit{{ $item+1 }}">Edit</a>
                                                     </button>
                                                     <button class="btn btn-danger text-white m-2">
-                                                        <a href="#" class="text-white">Hapus</a>
+                                                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#hapus{{ $item+1 }}">Hapus</a>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="hapus{{ $item+1 }}" tabindex="-1" aria-hidden="true">
+                                            <!--begin::Modal dialog-->
+                                            <div class="modal-dialog modal-dialog-centered mw-500px">
+                                                <!--begin::Modal content-->
+                                                <div class="modal-content">
+                                                    <!--begin::Modal header-->
+                                                    <div class="modal-header">
+                                                        <!--begin::Modal title-->
+                                                        <h2>Hapus Severity</h2>
+                                                        <!--end::Modal title-->
+                                                        <!--begin::Close-->
+                                                        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                            <span class="svg-icon svg-icon-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                                    <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </div>
+                                                        <!--end::Close-->
+                                                    </div>
+                                                    <!--end::Modal header-->
+                                                    <!--begin::Modal body-->
+                                                    <div class="modal-body">
+                                                        <!--begin::Stepper-->
+                                                        <form action="{{ route('severity.destroy') }}" method="POST">
+                                                        @csrf
+                                                            <input type="hidden" name="severity_id" value="{{ $key->id }}">
+                                                            <div class="row">
+                                                                <p>Apakah Anda Yakin Ingin Menghapus Severity {{ $key->nama_kriteria }}</p>
+                                                            </div>
+                                                            <div class="text-center pt-15">
+                                                                <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>
+                                                                <button type="submit"  class="btn btn-primary">
+                                                                    <span class="indicator-label">Submit</span>
+                                                                    <span class="indicator-progress">Please wait...
+                                                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Stepper-->
+                                                    </div>
+                                                    <!--end::Modal body-->
+                                                </div>
+                                                <!--end::Modal content-->
+                                            </div>
+                                            <!--end::Modal dialog-->
+                                        </div>
+                                        <div class="modal fade" id="edit{{ $item+1 }}" tabindex="-1" aria-hidden="true">
+                                            <!--begin::Modal dialog-->
+                                            <div class="modal-dialog modal-dialog-centered mw-900px">
+                                                <!--begin::Modal content-->
+                                                <div class="modal-content">
+                                                    <!--begin::Modal header-->
+                                                    <div class="modal-header">
+                                                        <!--begin::Modal title-->
+                                                        <h2>Edit Severity</h2>
+                                                        <!--end::Modal title-->
+                                                        <!--begin::Close-->
+                                                        <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                            <span class="svg-icon svg-icon-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                                    <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                                </svg>
+                                                            </span>
+                                                            <!--end::Svg Icon-->
+                                                        </div>
+                                                        <!--end::Close-->
+                                                    </div>
+                                                    <!--end::Modal header-->
+                                                    <!--begin::Modal body-->
+                                                    <div class="modal-body">
+                                                        <!--begin::Stepper-->
+                                                        <form action="{{ route('severity.update') }}" method="POST">
+                                                        @csrf
+                                                            <input type="hidden" name="severity_id" value="{{ $key->id }}">
+                                                            <div class="row">
+                                                                <div class="col-md-8">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label"><h5>Nama Severity</h5></label>
+                                                                        <input type="text" name="nama_kriteria" class="form-control @error('nama_kriteria')
+                                                                            is-invalid
+                                                                        @enderror" value="{{ old('nama_kriteria') }}"  placeholder="Masukkan Nama Kriteria" required>
+                                                                    </div>
+                                                                    @error('nama_kriteria')
+                                                                        <div class="text-muted text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="" class="control-label"><h5>Rating Kriteria</h5></label>
+                                                                        <input type="number" name="rating_kriteria" class="form-control @error('rating_kriteria')
+                                                                            is-invalid
+                                                                        @enderror" value="{{ old('rating_kriteria') }}" placeholder="Masukkan Rating Kriteria. Range 1 - 10" required>
+                                                                    </div>
+                                                                    @error('rating_kriteria')
+                                                                        <div class="text-muted text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center pt-15">
+                                                                <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>
+                                                                <button type="submit"  class="btn btn-primary">
+                                                                    <span class="indicator-label">Submit</span>
+                                                                    <span class="indicator-progress">Please wait...
+                                                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Stepper-->
+                                                    </div>
+                                                    <!--end::Modal body-->
+                                                </div>
+                                                <!--end::Modal content-->
+                                            </div>
+                                            <!--end::Modal dialog-->
+                                        </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>

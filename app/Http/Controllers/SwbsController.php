@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Kriteria;
 use App\Models\sub_swbs;
 use App\Models\swbs;
@@ -20,9 +21,10 @@ class SwbsController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'nama_sistem' => 'required',
-            // 'kode_sistem' => 'required',
+            'foto_sistem' => 'required|image|mimes:png,jpg',
         ]);
 
         if($validator->fails()){
@@ -30,9 +32,54 @@ class SwbsController extends Controller
         }
 
         $data = $request->all();
+
+        if ($request->hasFile('foto_sistem')) {
+            # code...
+            $depan = $request['foto_sistem'];
+            $fileName = 'images/foto_barang/'.md5($depan->getClientOriginalName().time()).".".$depan->getClientOriginalExtension();
+            $depan->move('./uploads/images/foto_barang/', $fileName);
+
+            $data['foto_sistem'] = $fileName;
+        }
+
+        // dd($data);
         swbs::create($data);
+        // swbs::create($data);
 
         return back()->with('success', 'Berhasil Menambahkan Data');
+    }
+    public function updateSwbs(Request $request){
+        $validator = Validator::make($request->all(), [
+            'nama_sistem' => 'required',
+            'foto_sistem' => 'required|image|mimes:png,jpg',
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->with('error', 'Gagal menambahkan Data');
+        }
+
+        $data = $request->except('_token', 'swbs_id');
+
+        if ($request->hasFile('foto_sistem')) {
+            # code...
+            $depan = $request['foto_sistem'];
+            $fileName = 'images/foto_barang/'.md5($depan->getClientOriginalName().time()).".".$depan->getClientOriginalExtension();
+            $depan->move('./uploads/images/foto_barang/', $fileName);
+
+            $data['foto_sistem'] = $fileName;
+        }
+
+        swbs::where('id', $request->swbs_id)->update($data);
+        // swbs::create($data);
+
+        return back()->with('success', 'Berhasil Mengubah Data');
+    }
+
+    public function destroySwbs(Request $request){
+        swbs::where('id', $request->swbs_id)->delete();
+
+        return back()->with('success', 'Berhasil Menghapus Data');
+
     }
 
     public function detail($swbs_id){
@@ -63,6 +110,27 @@ class SwbsController extends Controller
         sub_swbs::create($data);
 
         return back()->with('success', 'Berhasil Menambahkan Data');
+
+    }
+    public function editsubSistem(Request $request){
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'swbs_id' => 'required|numeric|exists:swbs,id',
+            'nama_sub_sistem' => 'required',
+            'kode_sistem' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->with('error', 'Gagal menambahkan Data');
+        }
+        $data = $request->except('_token', 'subsistem_id');
+        $data['kode_sistem'] = strtoupper($request['kode_sistem']);
+
+        // dd($data);
+        // dd($data);
+        sub_swbs::where('id', $request->subsistem_id)->update($data);
+
+        return back()->with('success', 'Berhasil Mengubah Data');
 
     }
 
@@ -102,6 +170,17 @@ class SwbsController extends Controller
         Swbs_komponen::create($data);
         
         return back()->with('success', 'Berhasil Menambahkan Data');
+
+    }
+
+    public function editkomponen(Request $request){
+        // dd($request->all());
+
+        $data = $request->except('_token', 'komponen_id');
+
+        Swbs_komponen::where('id', $request->komponen_id)->update($data);
+
+        return back()->with('success', 'Berhasil Mengubah Data');
 
     }
 
