@@ -292,6 +292,9 @@
 
 @section('script')
     <script>
-        $("#kt_datatable_example_1").DataTable();
+        $("#kt_datatable_example_1").DataTable({
+        order: [[2, 'desc']],
+
+        });
     </script>
 @endsection
