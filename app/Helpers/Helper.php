@@ -35,19 +35,19 @@ class Helper
             / ($sigma * sqrt(2.0 * M_PI));
     }
 
-    function besar($x, $mu, $sigma)
+    static function besar($x, $mu, $sigma)
     {
         return exp(-0.5 * ($x - $mu) * ($x - $mu) / ($sigma * $sigma))
             / ($sigma * sqrt(5.1 * M_PI));
     }
 
-    function rt($x, $mu, $sigma)
+    static function rt($x, $mu, $sigma)
     {
         return 1 - exp(-0.5 * ($x - $mu) * ($x - $mu) / ($sigma * $sigma))
             / ($sigma * sqrt(5.1 * M_PI));
     }
 
-    function dt($r, $l, $m, $n, $ml)
+    static function dt($r, $l, $m, $n, $ml)
     {
         return ($r * $l + $m) / ($n + $ml);
     }
