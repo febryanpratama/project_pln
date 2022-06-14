@@ -18,7 +18,7 @@ class RcmController extends Controller
     {
         $title = 'RCM';
         $komponen = Swbs_komponen::get();
-        $data = Interval_waktu::get();
+        $data = Interval_waktu::with('komponen')->get();
         return view('pages.admin.rcm.index', compact(['title', 'data', 'komponen']));
     }
 
@@ -87,8 +87,9 @@ class RcmController extends Controller
     public function detail($id)
     {
         $title = 'Detail Interval Waktu';
-        $data = Detail_interval_waktu::with('interval_waktu')->where('interval_waktu_id', $id)->orderBy('dt', 'desc')->get();
+        $data = Detail_interval_waktu::with('interval_waktu', 'interval_waktu.komponen')->where('interval_waktu_id', $id)->orderBy('dt', 'desc')->get();
 
+        // dd($data);
         return view('pages.admin.rcm.detail', compact(['title', 'data']));
         // dd($data);
     }

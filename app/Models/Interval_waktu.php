@@ -11,4 +11,9 @@ class Interval_waktu extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
+
+    public function komponen()
+    {
+        return $this->belongsTo(Swbs_komponen::class, 'komponen_id', 'id');
+    }
 }

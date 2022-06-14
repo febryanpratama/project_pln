@@ -39,7 +39,7 @@
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
                                         <tr>
-                                            <td>{{ $key->interval_waktu->komponen_id }}</td>
+                                            <td>{{ $key->interval_waktu->komponen->nama_komponen }}</td>
                                             <td>{{ $key->interval_waktu->waktu_korektif }}</td>
                                             <td>{{ $key->interval_waktu->waktu_preventif }}</td>
                                             <td>{{ $key->fkecilt }}</td>
