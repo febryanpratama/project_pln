@@ -53,7 +53,7 @@
                     <form action="" action="{{ url('rcm') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6 mt-3">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Nama Komponen</h5></label>
                                     <select name="komponen_id" class="form-control" id="">
@@ -67,23 +67,59 @@
                                     <div class="text-muted text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6 mt-3">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Waktu Perbaikan Korektif</h5></label>
                                     <input type="number" name="korektif" class="form-control @error('korektif')
                                         is-invalid
-                                    @enderror" value="{{ old('korektif') }}"  placeholder="Masukkan Nama Kriteria" required>
+                                    @enderror" value="{{ old('korektif') }}"  placeholder="Masukkan Nama Waktu Korektif" required>
                                 </div>
                                 @error('korektif')
                                     <div class="text-muted text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6 mt-3">
                                 <div class="form-group">
                                     <label for="" class="control-label"><h5>Waktu Perbaikan Preventif</h5></label>
                                     <input type="number" name="preventif" class="form-control @error('preventif')
                                         is-invalid
-                                    @enderror" value="{{ old('preventif') }}" placeholder="Masukkan Rating Kriteria. Range 1 - 10" required>
+                                    @enderror" value="{{ old('preventif') }}" placeholder="Masukkan Nama Waktu Preventif" required>
+                                </div>
+                                @error('rating_kriteria')
+                                    <div class="text-muted text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <label for="" class="control-label"><h5>Tipe</h5></label>
+                                    <select name="tipe" class="form-control" id="">
+                                        <option value="" selected disabled>== Pilih ==</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Gamma">Gamma</option>
+                                        <option value="Lognormal">Lognormal</option>
+                                    </select>
+                                </div>
+                                @error('rating_kriteria')
+                                    <div class="text-muted text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <label for="" class="control-label"><h5>Mu</h5></label>
+                                    <input type="text" name="mu" class="form-control @error('preventif')
+                                        is-invalid
+                                    @enderror" value="{{ old('preventif') }}" placeholder="Masukkan Angka Mu" required>
+                                </div>
+                                @error('rating_kriteria')
+                                    <div class="text-muted text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <label for="" class="control-label"><h5>Sigma</h5></label>
+                                    <input type="text" name="sigma" class="form-control @error('preventif')
+                                        is-invalid
+                                    @enderror" value="{{ old('preventif') }}" placeholder="Masukkan Angka Sigma" required>
                                 </div>
                                 @error('rating_kriteria')
                                     <div class="text-muted text-danger">{{ $message }}</div>

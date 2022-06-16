@@ -170,8 +170,9 @@
                                                     <!--begin::Modal body-->
                                                     <div class="modal-body">
                                                         <!--begin::Stepper-->
-                                                        <form action="{{ url('occurence') }}" method="POST">
+                                                        <form action="{{ route('occurence.destroy') }}" method="POST">
                                                         @csrf
+                                                        <input type="hidden" name="id" value="{{ $key->id }}">
                                                             <div class="row">
                                                                 <p>Apakah Anda yakin ingin menghapus data Occurence {{ $key->nama_occurence }}</p>
                                                             </div>
@@ -219,8 +220,9 @@
                                                     <!--begin::Modal body-->
                                                     <div class="modal-body">
                                                         <!--begin::Stepper-->
-                                                        <form action="{{ url('occurence') }}" method="POST">
+                                                        <form action="{{ url('occurence/update') }}" method="POST">
                                                         @csrf
+                                                        <input type="hidden" name="id" value="{{ $key->id }}">
                                                             <div class="row">
                                                                 <div class="col-md-8">
                                                                     <div class="form-group">

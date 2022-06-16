@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('detail_interval_waktus', function (Blueprint $table) {
             $table->id();
             $table->integer('interval_waktu_id');
+            $table->string('t');
             $table->string('fkecilt');
             $table->string('fbesart');
             $table->string('rt');

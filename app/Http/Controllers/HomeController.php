@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Interval_waktu;
+use App\Models\swbs;
+use App\Models\Swbs_komponen;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $komponen = Swbs_komponen::count('id');
+        $rcm = Interval_waktu::count('id');
+        $sistem = swbs::count('id');
+
+        $data = Interval_waktu::with('komponen')->get();
+
+        // $data_rcm = 
+        // dd($komponen);
+
+        return view('home', compact(['komponen', 'rcm', 'sistem', 'data']));
     }
 }

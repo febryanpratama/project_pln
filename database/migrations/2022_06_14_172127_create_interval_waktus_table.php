@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('tp');
             $table->string('mu');
             $table->string('sigma');
+            $table->string('tipe');
             $table->softDeletes();
             $table->timestamps();
         });

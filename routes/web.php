@@ -64,6 +64,7 @@ Route::controller(OccurenceController::class)->group(function () {
         Route::get('/', 'index');
         Route::post('/', 'store');
         Route::post('/update', 'update')->name('occurence.update');
+        Route::post('/destroy', 'destroy')->name('occurence.destroy');
     });
 });
 Route::controller(DetectionController::class)->group(function () {
@@ -101,11 +102,9 @@ Route::controller(SwbsController::class)->group(function () {
 Route::controller(FungsiControlller::class)->group(function () {
     Route::prefix('fungsi-sistem')->group(function () {
         Route::get('/', 'index');
-        // Route::get('/{swbs_id}', 'detail');
-        // Route::get('/{swbs_id}/sub-sistem/{subsistem_id}', 'detailSubsistem');
         Route::post('/', 'store');
-        // Route::post('/sub-sistem', 'subSistem');
-        // Route::post('/komponen', 'komponen');
+        Route::post('/update', 'update');
+        Route::post('/destroy', 'destroy');
     });
 });
 

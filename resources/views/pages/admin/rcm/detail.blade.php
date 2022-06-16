@@ -29,24 +29,31 @@
                                             <th>Nama Komponen</th>
                                             <th>Waktu Korektif</th>
                                             <th>Waktu Preventif</th>
+                                            <th>t</th>
                                             <th>ft</th>
                                             <th>Ft</th>
                                             <th>rt</th>
                                             <th>ht</th>
                                             <th>dt</th>
+                                            <th>Rank</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
+                                        @php
+                                            $i = $item++
+                                        @endphp
                                         <tr>
                                             <td>{{ $key->interval_waktu->komponen->nama_komponen }}</td>
                                             <td>{{ $key->interval_waktu->waktu_korektif }}</td>
                                             <td>{{ $key->interval_waktu->waktu_preventif }}</td>
+                                            <td>{{ $key->t }}</td>
                                             <td>{{ $key->fkecilt }}</td>
                                             <td>{{ $key->fbesart }}</td>
                                             <td>{{ $key->rt }}</td>
                                             <td>{{ $key->ht }}</td>
                                             <td>{{ $key->dt }}</td>
+                                            <td>{{ count($data)-$i }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

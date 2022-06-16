@@ -29,8 +29,9 @@ class RcmController extends Controller
         $tf = $request->korektif / (24 * 60);
         $tp = $request->preventif / (24 * 60);
 
-        $mu = 354.8;
-        $sigma = 14.873;
+
+        $mu = $request->mu;
+        $sigma = $request->sigma;
         // dd($tp);
 
         // $data = array();
@@ -46,10 +47,11 @@ class RcmController extends Controller
                 'tp'                => $tp,
                 'mu'                => $mu,
                 'sigma'             => $sigma,
+                'tipe'              => $request->tipe
             ]);
 
             $htu = NULL;
-            for ($i = 0; $i <= 50; $i++) {
+            for ($i = 0; $i < 421; $i++) {
                 # code...
                 $fkecilt = Helper::normal($i, $mu, $sigma);
                 $fbesart = Helper::besar($i, $mu, $sigma);
@@ -64,6 +66,7 @@ class RcmController extends Controller
                 $dt = Helper::dt($ht, $tf, $tp, $i, $tp);
 
                 Detail_interval_waktu::create([
+                    't'                 => $i,
                     'interval_waktu_id' => $interval_waktu->id,
                     'fkecilt'           => $fkecilt,
                     'fbesart'           => $fbesart,
