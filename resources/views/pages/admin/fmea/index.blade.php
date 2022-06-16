@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="" class="control-label">Nama Sistem</label>
                                     <select name="swbs_id" id="swbs" class="form-control">
-                                        <option value="" disabled>== PILIH ==</option>
+                                        <option value="" selected disabled>== PILIH ==</option>
                                         @foreach ($sistem as $item=>$key)
                                             <option value="{{ $key->id }}">{{ $key->nama_sistem }}</option>
                                         @endforeach
@@ -67,8 +67,11 @@
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
                                     <label for="" class="control-label">Nama Komponen</label>
-                                    <select name="komponen_id" id="list-3"  class="form-control">
-                                        
+                                    <select name="komponen_id"  class="form-control">
+                                        <option value="" selected disabled></option>
+                                        <div id="list-3">
+
+                                        </div>
                                     </select>
                                 </div>
                             </div>

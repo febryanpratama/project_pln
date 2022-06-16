@@ -14,9 +14,10 @@ use Illuminate\Http\Request;
 class FmeaController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $title = "Failur Mode Effect Analysis";
-        $data = Fmea::with('swbs','subswbs', 'komponen', 'severity', 'occurence', 'detection','fungsi')->get();
+        $data = Fmea::with('swbs', 'subswbs', 'komponen', 'severity', 'occurence', 'detection', 'fungsi')->get();
         $sistem = swbs::get();
         $severity = Kriteria::get();
         $occurence = Occurence::get();
@@ -27,7 +28,8 @@ class FmeaController extends Controller
         return view('pages.admin.fmea.index', compact(['title', 'data', 'sistem', 'severity', 'occurence', 'detection']));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // dd($request->all());
         $data = $request->all();
         $dt = new DateTime();
