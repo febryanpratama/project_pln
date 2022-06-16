@@ -165,7 +165,7 @@
                                         @foreach ($data as $item=>$key)
                                         <tr>
                                             <td>{{ $key->komponen->nama_komponen }}</td>
-                                            <td>{{ $key->komponen->nama_komponen }}</td>
+                                            <td>{{ $key->komponen->fungsi->kegagalan_fungsi }}</td>
                                             <td>
                                                 @switch($key->pertanyaan_1)
                                                     @case(1)

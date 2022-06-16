@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Swbs_komponen extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function subsistem(){
+    public function subsistem()
+    {
         return $this->belongsTo(sub_swbs::class, 'subsistem_id', 'id');
+    }
+
+    public function fungsi()
+    {
+        return $this->belongsTo(Fungsi_sistem::class, 'id', 'komponen_id');
     }
 }

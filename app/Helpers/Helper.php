@@ -11,13 +11,13 @@ class Helper
     static function TotalRpn($severity_id, $occurence_id, $detection_id)
     {
 
-        $severity = Kriteria::where('id', $severity_id)->first();
+        $severity = Kriteria::where('id', $severity_id)->first()->withTrashed();
         $rating_severity = $severity->rating_kriteria;
 
-        $occurence = Occurence::where('id', $occurence_id)->first();
+        $occurence = Occurence::where('id', $occurence_id)->first()->withTrashed();
         $rating_occurence = $occurence->rating_occurence;
 
-        $detection = Detection::where('id', $detection_id)->first();
+        $detection = Detection::where('id', $detection_id)->first()->withTrashed();
         $rating_detection = $detection->rating_detection;
 
         $rpn = $rating_severity * $rating_occurence * $rating_detection;

@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class TindakanController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         $title = "Pemilihan Tindakan";
         $komponen = Swbs_komponen::get();
-        $data = PemilihanTindakan::with('komponen')->get();
+        $data = PemilihanTindakan::with('komponen', 'komponen.fungsi')->get();
+        // dd($data);
         return view('pages.admin.tindakan.index', compact([
             'title',
             'komponen',
@@ -20,7 +22,8 @@ class TindakanController extends Controller
         ]));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // dd($request->all());
         $data = $request->all();
         PemilihanTindakan::create($data);

@@ -18,7 +18,6 @@ class FungsiControlller extends Controller
         $data = Fungsi_sistem::with('komponen', 'swbs', 'subswbs')->get();
         $komponen = Swbs_komponen::get();
 
-        // dd($data);
         return view('pages.admin.swbs.fungsi', compact(['title', 'data', 'komponen']));
     }
 
@@ -45,8 +44,9 @@ class FungsiControlller extends Controller
         $kode_kegagalan_fungsi = $komponen->kode_komponen . "." . ($cek_kode_kegagalan + 1);
 
         // dd($kode_kegagalan_fungsi);
+        // dd(($komponen->subsistem_id));
         $data['swbs_id'] = $swbs->id;
-        $data['subsistem_id'] = $komponen->id;
+        $data['subsistem_id'] = $komponen->subsistem_id;
         $data['kode_fungsi'] = $komponen->kode_komponen;
         $data['kode_kegagalan_fungsi'] = $kode_kegagalan_fungsi;
 

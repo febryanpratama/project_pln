@@ -144,18 +144,12 @@
                                     </thead>
                                     <tbody class="text-center">
                                         @foreach ($data as $item=>$key)
-                                            @if (empty($key->komponen))
-                                            
-                                            @endif
-                                            @if (empty($key->subswbs))
-                                                
-                                            @endif
                                             <tr>
                                                 <td>
                                                     @if (empty($key->subswbs->kode_sistem))
-                                                        Null Kode
-                                                        @else
-                                                        {{ $key->subswbs->kode_sistem }}
+                                                    Null Kode
+                                                    @else
+                                                    {{ $key->subswbs->kode_sistem }}
                                                     @endif
                                                 </td>
                                                 <td>
@@ -211,7 +205,7 @@
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{ $key->id }}">
                                                             <div class="row">
-                                                                <p>Apakah Anda yakin ingin menghapus data Occurence {{ $key->nama_occurence }}</p>
+                                                                <p>Apakah Anda yakin ingin menghapus data Fungsi Sistem</p>
                                                             </div>
                                                             <div class="text-center pt-15">
                                                                 <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>

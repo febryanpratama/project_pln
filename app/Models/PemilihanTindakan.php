@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PemilihanTindakan extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function komponen(){
+    public function komponen()
+    {
         return $this->belongsTo(Swbs_komponen::class, 'komponen_id', 'id');
     }
+
+    // public function fungsi(){
+    //     return $this->belongsTo(Fungsi_sistem::class, '');
+    // }
 }
