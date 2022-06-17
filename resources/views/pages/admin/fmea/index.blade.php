@@ -67,11 +67,11 @@
                             <div class="col-md-12 mt-3">
                                 <div class="form-group">
                                     <label for="" class="control-label">Nama Komponen</label>
-                                    <select name="komponen_id"  class="form-control">
-                                        <option value="" selected disabled></option>
-                                        <div id="list-3">
+                                    <select name="komponen_id" id="komponen_data" class="form-control">
+                                        <option value="" selected disabled> == PILIH == </option>
+                                        {{-- <div id="">
 
-                                        </div>
+                                        </div> --}}
                                     </select>
                                 </div>
                             </div>
@@ -225,34 +225,32 @@
 
 <script>
 
-$('#swbs').on('change', function() {
-    $('#list-3').html('')
-    var swbs_id = this.value
-    $.ajax({
-        url: '{{ url("api/sistem") }}',
-        type: 'post',
-        dataType: 'json',
-        headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        },
-        data: {
-            'swbs_id' : swbs_id
-        },
-        success: (data)=>{
-            var dataSistem = data.data
-            $.each(dataSistem, function(index){
-                console.log(dataSistem[index].komponen);
+    $('#swbs').on('change', function() {
+        $('#komponen_data').html('')
+        var swbs_id = this.value
+        // console.log(swbs_id);
+        $.ajax({
+            url: '{{ url("api/sistem") }}',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                'swbs_id' : swbs_id
+            },
+            success: (data)=>{
+                var dataSistem = data.data
+                $.each(dataSistem, function(index){
 
-                var komponen = dataSistem[index].komponen
-                $.each(komponen, function(i){
-                    $('#list-3').append(`
-                        <option value="`+komponen[i].id+`">`+komponen[i].nama_komponen+`</option>
-                        `)
+                    var komponen = dataSistem[index].komponen
+                    $.each(komponen, function(i){
+                        console.log(komponen[i].nama_komponen);
+                        $('#komponen_data').append(`
+                            <option value="`+komponen[i].id+`">`+komponen[i].nama_komponen+`</option>
+                            `)
+                        })
                     })
-                })
-            }
+                }
+        })
     })
-})
 </script>
 @endsection
 

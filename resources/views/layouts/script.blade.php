@@ -10,15 +10,6 @@
 <script src="{{ asset('') }}assets/js/widgets.bundle.js"></script>
 <script src="{{ asset('') }}assets/js/custom/widgets.js"></script>
 <script src="{{ asset('') }}assets/js/custom/apps/chat/chat.js"></script>
-{{-- <script src="{{ asset('') }}assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/create-app.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
-<script src="{{ asset('') }}assets/js/custom/utilities/modals/users-search.js"></script> --}}
-
 <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 @if (\Session::has('success'))
     <script>
