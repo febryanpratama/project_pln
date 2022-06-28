@@ -154,12 +154,15 @@
                                                     <button class="btn btn-info text-white m-2">
                                                         <a href="{{ url('swbs/'. $key->swbs_id .'/sub-sistem/'.$key->id) }}" class="text-white">Detail komponen</a>
                                                     </button>
+                                                    @role('Admin|Operator')
+
                                                     <button class="btn btn-warning text-white m-2">
                                                         <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#edit{{ $item+1 }}">Edit</a>
                                                     </button>
                                                     <button class="btn btn-danger text-white m-2">
                                                         <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#hapus{{ $item+1 }}">Hapus</a>
                                                     </button>
+                                                    @endrole
                                                 </div>
                                             </td>
                                         </tr>

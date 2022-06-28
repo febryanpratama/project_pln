@@ -8,7 +8,11 @@ use App\Models\Interval_waktu;
 use App\Models\Kriteria;
 use App\Models\Swbs_komponen;
 use Illuminate\Http\Request;
+use MathPHP\Probability\Distribution\Continuous;
+
 use Illuminate\Support\Facades\DB;
+use \PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions\Normal;
+
 
 class RcmController extends Controller
 {
@@ -51,10 +55,19 @@ class RcmController extends Controller
             ]);
 
             $htu = NULL;
+            $spreadsheet = new Normal();
             for ($i = 0; $i < 421; $i++) {
                 # code...
-                $fkecilt = Helper::normal($i, $mu, $sigma);
-                $fbesart = Helper::besar($i, $mu, $sigma);
+                $σ      = 14.873;
+                $μ      = 354.8;
+                $x      = $i;
+                // $standardNormal = new Continuous\StandardNormal();
+                $normal = new Continuous\Normal($μ, $σ);
+                $fkecilt    = $normal->pdf($x);
+                $fbesart    = $normal->cdf($x);
+
+                // $fkecilt = $spreadsheet->distribution(5, 354.8, 14.873, false);
+                // $fbesart = Helper::besar($i, $mu, $sigma);
                 $rt = Helper::rt($i, $mu, $sigma);
                 $htu = $fbesart;
                 if ($i == 0) {

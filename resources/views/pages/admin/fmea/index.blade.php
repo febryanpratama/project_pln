@@ -15,7 +15,10 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
+                @role('Admin|Operator')
+
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ FMEA</a>
+                @endrole
             </div>
             <!--end::Actions-->
         </div>

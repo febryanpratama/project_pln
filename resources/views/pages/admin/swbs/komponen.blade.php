@@ -15,7 +15,10 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
+                @role('Admin|Operator')
+
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Komponen</a>
+                @endrole
             </div>
             <!--end::Actions-->
         </div>
@@ -138,7 +141,10 @@
                                             <th>Nama Sub Sistem</th>
                                             <th>Nama Komponen</th>
                                             <th>Kode Kode Komponen</th>
+                                            @role('Admin|Operator')
+
                                             <th>Aksi</th>
+                                            @endrole
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -147,6 +153,7 @@
                                             <td>{{ $key->subsistem->nama_sub_sistem }}</td>
                                             <td>{{ $key->nama_komponen }}</td>
                                             <td>{{ $key->kode_komponen }}</td>
+                                            @role('Admin|Operator')
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     {{-- <button class="btn btn-info text-white m-2">
@@ -160,6 +167,7 @@
                                                     </button>
                                                 </div>
                                             </td>
+                                            @endrole
                                         </tr>
                                         <div class="modal fade" id="edit{{ $item+1 }}" tabindex="-1" aria-hidden="true">
                                             <!--begin::Modal dialog-->
