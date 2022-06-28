@@ -55,7 +55,6 @@ class RcmController extends Controller
             ]);
 
             $htu = NULL;
-            $spreadsheet = new Normal();
             for ($i = 0; $i < 421; $i++) {
                 # code...
                 $σ      = 14.873;
