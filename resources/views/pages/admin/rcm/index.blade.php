@@ -53,7 +53,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body">
                     <!--begin::Stepper-->
-                    <form action="" action="{{ url('rcm') }}" method="POST">
+                    <form action="{{ url('rcm') }}" method="POST">
                     @csrf
                         <div class="row">
                             <div class="col-md-6 mt-3">

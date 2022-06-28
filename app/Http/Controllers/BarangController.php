@@ -78,128 +78,128 @@ class BarangController extends Controller
         return back()->with('success', 'Berhasil Menghapus Data Barang');
     }
 
-    public function test()
-    {
-        $spreadsheet = new Normal();
-        $data = $spreadsheet->distribution(5, 354.8, 14.873, false);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    // public function test()
+    // {
+    //     $spreadsheet = new Normal();
+    //     $data = $spreadsheet->distribution(5, 354.8, 14.873, false);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
 
-        // $
-        // $data1 = Helper::besar(5, 354.8, 14.873);
+    //     // $
+    //     // $data1 = Helper::besar(5, 354.8, 14.873);
 
-        $data2 = Helper::rt(5, 354.8, 14.873);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     $data2 = Helper::rt(5, 354.8, 14.873);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
 
-        // $spread = new StandardNormal();
-        // $x  = $spread->distribution(0, true);
-        // dd("5 --------------------ft=" . $data . "-------------Ft=" . $data1 . '------------rt=' . $data2);
-
-
-        // norm.dist(5, 354.8, 14.873)
-        $data = $spreadsheet->distribution(0, 354.8, 14.873, false);
-        $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-        // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
-
-        // dd($data1);
-        // $x = 7.1662E-126;
-        // $b1 =  0.319381530;
-        // $b2 = -0.356563782;
-        // $b3 =  1.781477937;
-        // $b4 = -1.821255978;
-        // $b5 =  1.330274429;
-        // $p  =  0.2316419;
-        // $c  =  0.39894228;
-
-        // if (
-        //     $x >= 0.0
-        // ) {
-        //     $t = 1.0 / (1.0 + $p * $x);
-        //     $kl =  (1.0 - $c * exp(-$x * $x / 2.0) * $t *
-        //         ($t * ($t * ($t * ($t * $b5 + $b4) + $b3) + $b2) + $b1));
-        //     dd($kl . "awda");
-        // } else {
-        //     $t = 1.0 / (1.0 - $p * $x);
-        //     $kt = ($c * exp(-$x * $x / 2.0) * $t *
-        //         ($t * ($t * ($t * ($t * $b5 + $b4) + $b3) + $b2) + $b1));
-
-        //     dd($kt . "uih");
-        // }
-
-        $σ      = 14.873;
-        $μ      = 354.8;
-        $x      = 274;
-        // $standardNormal = new Continuous\StandardNormal();
-        $normal = new Continuous\Normal($μ, $σ);
-        $pdf    = $normal->pdf($x);
-        $cdf            = $normal->cdf($x);
-
-        // dd($cdf);
+    //     // $spread = new StandardNormal();
+    //     // $x  = $spread->distribution(0, true);
+    //     // dd("5 --------------------ft=" . $data . "-------------Ft=" . $data1 . '------------rt=' . $data2);
 
 
-        // function cumnormdist($x)
-        // {
-        // }
+    //     // norm.dist(5, 354.8, 14.873)
+    //     $data = $spreadsheet->distribution(0, 354.8, 14.873, false);
+    //     $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data2 = $spreadsheet->distribution(0, 354.8, 14.873, true);
+    //     // $data1 = $spreadsheet->distribution(0, 354.8, 14.873, true);
 
-        // 
-        // $μ         = 354.8;   // scale parameter
-        // $σ         = 14.873;   // location parameter
-        // $x         = 0;
-        // $logNormal = new Continuous\LogNormal($μ, $σ);
-        // // $logNormal = new Continuous\LogNorm($μ, $σ);
-        // $pdf       = $logNormal->pdf($x);
-        // $cdf       = $logNormal->cdf($x);
-        // // $icdf      = $logNormal->inverse($p);
-        // $μ         = $logNormal->mean();
-        // $median    = $logNormal->median();
-        // $mode      = $logNormal->mode();
-        // $σ²        = $logNormal->variance();
+    //     // dd($data1);
+    //     // $x = 7.1662E-126;
+    //     // $b1 =  0.319381530;
+    //     // $b2 = -0.356563782;
+    //     // $b3 =  1.781477937;
+    //     // $b4 = -1.821255978;
+    //     // $b5 =  1.330274429;
+    //     // $p  =  0.2316419;
+    //     // $c  =  0.39894228;
 
-        // $σ      = 354.8;
-        // $μ      = 14.873;
-        // $x      = 2;
-        // $normal = new Continuous\Normal($μ, $σ);
-        // $pdf    = $normal->pdf($x);
-        // $cdf    = $normal->cdf($x);
-        // $icdf   = $normal->inverse(1);
-        // $μ      = $normal->mean();
-        // $median = $normal->median();
-        // $mode   = $normal->mode();
-        // $σ²     = $normal->variance();
+    //     // if (
+    //     //     $x >= 0.0
+    //     // ) {
+    //     //     $t = 1.0 / (1.0 + $p * $x);
+    //     //     $kl =  (1.0 - $c * exp(-$x * $x / 2.0) * $t *
+    //     //         ($t * ($t * ($t * ($t * $b5 + $b4) + $b3) + $b2) + $b1));
+    //     //     dd($kl . "awda");
+    //     // } else {
+    //     //     $t = 1.0 / (1.0 - $p * $x);
+    //     //     $kt = ($c * exp(-$x * $x / 2.0) * $t *
+    //     //         ($t * ($t * ($t * ($t * $b5 + $b4) + $b3) + $b2) + $b1));
+
+    //     //     dd($kt . "uih");
+    //     // }
+
+    //     $σ      = 14.873;
+    //     $μ      = 354.8;
+    //     $x      = 274;
+    //     // $standardNormal = new Continuous\StandardNormal();
+    //     $normal = new Continuous\Normal($μ, $σ);
+    //     $pdf    = $normal->pdf($x);
+    //     $cdf            = $normal->cdf($x);
+
+    //     // dd($cdf);
 
 
-        // echo $pdf . "-----------------" . $cdf;
-        // dd($);
-        // use gburtini\Distributions\Normal;
-        // 
-        // $σ      = 14.873;
-        // $μ      = 354.8;
-        // $x      = 0;
-        // $normal = new Continuous\Normal($μ, $σ);
-        // $pdf    = $normal->pdf($x);
-        // $cdf    = $normal->cdf($x);
-        // // $icdf   = $normal->inverse();
-        // $μ      = $normal->mean();
-        // $median = $normal->median();
-        // $mode   = $normal->mode();
+    //     // function cumnormdist($x)
+    //     // {
+    //     // }
 
-        // dd($cdf);
-        $h = 0.5 * (1 + Helper::erf((325 - 354.18) / (14.873 * sqrt(2))));
+    //     // 
+    //     // $μ         = 354.8;   // scale parameter
+    //     // $σ         = 14.873;   // location parameter
+    //     // $x         = 0;
+    //     // $logNormal = new Continuous\LogNormal($μ, $σ);
+    //     // // $logNormal = new Continuous\LogNorm($μ, $σ);
+    //     // $pdf       = $logNormal->pdf($x);
+    //     // $cdf       = $logNormal->cdf($x);
+    //     // // $icdf      = $logNormal->inverse($p);
+    //     // $μ         = $logNormal->mean();
+    //     // $median    = $logNormal->median();
+    //     // $mode      = $logNormal->mode();
+    //     // $σ²        = $logNormal->variance();
 
-        dd($h);
-    }
+    //     // $σ      = 354.8;
+    //     // $μ      = 14.873;
+    //     // $x      = 2;
+    //     // $normal = new Continuous\Normal($μ, $σ);
+    //     // $pdf    = $normal->pdf($x);
+    //     // $cdf    = $normal->cdf($x);
+    //     // $icdf   = $normal->inverse(1);
+    //     // $μ      = $normal->mean();
+    //     // $median = $normal->median();
+    //     // $mode   = $normal->mode();
+    //     // $σ²     = $normal->variance();
+
+
+    //     // echo $pdf . "-----------------" . $cdf;
+    //     // dd($);
+    //     // use gburtini\Distributions\Normal;
+    //     // 
+    //     // $σ      = 14.873;
+    //     // $μ      = 354.8;
+    //     // $x      = 0;
+    //     // $normal = new Continuous\Normal($μ, $σ);
+    //     // $pdf    = $normal->pdf($x);
+    //     // $cdf    = $normal->cdf($x);
+    //     // // $icdf   = $normal->inverse();
+    //     // $μ      = $normal->mean();
+    //     // $median = $normal->median();
+    //     // $mode   = $normal->mode();
+
+    //     // dd($cdf);
+    //     $h = 0.5 * (1 + Helper::erf((325 - 354.18) / (14.873 * sqrt(2))));
+
+    //     dd($h);
+    // }
 }

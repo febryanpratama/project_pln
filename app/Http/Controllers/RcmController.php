@@ -28,7 +28,7 @@ class RcmController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         $tf = $request->korektif / (24 * 60);
         $tp = $request->preventif / (24 * 60);
