@@ -17,7 +17,7 @@
                 <!--begin::Filter menu-->
                 @role('Admin|Operator')
 
-                <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Data</a>
+                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Data</a>
                 @endrole
             </div>
             <!--end::Actions-->
