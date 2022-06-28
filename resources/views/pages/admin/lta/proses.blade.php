@@ -15,7 +15,9 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
+                @role('Admin')
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Pertanyaan LTA</a>
+                @endrole
             </div>
             <!--end::Actions-->
         </div>
@@ -137,7 +139,9 @@
                                             <th>Safety</th>
                                             <th>Outage</th>
                                             <th>Kategori</th>
+                                            @role("Admin")
                                             <th>Aksi</th>
+                                            @endrole
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -181,6 +185,7 @@
                                                 @endswitch
                                             </td>
                                             <td>{{ $key->category }}</td>
+                                            @role("Admin")
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     <button class="btn btn-danger text-white m-2">
@@ -188,6 +193,7 @@
                                                     </button>
                                                 </div>
                                             </td>
+                                            @endrole
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Interval_waktu;
 use App\Models\swbs;
 use App\Models\Swbs_komponen;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,12 +30,13 @@ class HomeController extends Controller
         $komponen = Swbs_komponen::count('id');
         $rcm = Interval_waktu::count('id');
         $sistem = swbs::count('id');
+        $users = User::latest()->take(5)->get();
 
         $data = Interval_waktu::with('komponen')->get();
 
         // $data_rcm = 
         // dd($komponen);
 
-        return view('home', compact(['komponen', 'rcm', 'sistem', 'data']));
+        return view('home', compact(['komponen', 'rcm', 'sistem', 'data', 'users']));
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\RcmController;
 use App\Http\Controllers\RpnController;
 use App\Http\Controllers\SwbsController;
 use App\Http\Controllers\TindakanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -141,5 +142,14 @@ Route::controller(RcmController::class)->group(function () {
         Route::get('/', 'index');
         Route::get('/{id}', 'detail');
         Route::post('/', 'store');
+    });
+});
+
+Route::controller(UserController::class)->group(function () {
+    Route::prefix('/users')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/', 'store');
+        Route::post('/update', 'update');
+        Route::post('/destroy', 'destroy');
     });
 });

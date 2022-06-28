@@ -62,11 +62,13 @@
                                             <th>Nama Komponen</th>
                                             <th>Waktu Korektif</th>
                                             <th>Waktu Preventif</th>
+                                            <th>t</th>
                                             <th>ft</th>
                                             <th>Ft</th>
                                             <th>rt</th>
                                             <th>ht</th>
                                             <th>dt</th>
+                                            <th>Rank</th>
                                         </tr>
                                     </tfoot>
                                 </table>

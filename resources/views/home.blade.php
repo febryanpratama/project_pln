@@ -123,6 +123,11 @@
                                 <td class="text-end text-muted fw-bold">{{ $item->waktu_preventif }}</td>
                                 <td class="text-end text-muted fw-bold">{{ substr($item->tf,0,9) }}</td>
                                 <td class="text-end text-muted fw-bold">{{ substr($item->tp,0,9) }}</td>
+                                <td class="text-end text-muted fw-bold">
+                                    <a href="{{ url('rcm/'.$item->id) }}" class="badge badge-primary">
+                                        detail
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -145,21 +150,8 @@
             <div class="card-header border-0 pt-5">
                 <h3 class="card-title align-items-start flex-column">
                     <span class="card-label fw-bolder fs-3 mb-1">User Latest</span>
-                    <span class="text-muted mt-1 fw-bold fs-7">More than 400 new members</span>
+                    <span class="text-muted mt-1 fw-bold fs-7">More than new members</span>
                 </h3>
-                <div class="card-toolbar">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_4_tab_1">Month</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1" data-bs-toggle="tab" href="#kt_table_widget_4_tab_2">Week</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4" data-bs-toggle="tab" href="#kt_table_widget_4_tab_3">Day</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
             <!--end::Header-->
             <!--begin::Body-->
@@ -183,201 +175,33 @@
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody>
+                                    @foreach ($users as $item=>$key)
                                     <tr>
                                         <td>
                                             <div class="symbol symbol-50px">
-                                                <img src="{{ asset('') }}assets/media/avatars/300-14.jpg" alt="" />
+                                                <img src="uploads/{{ $key->avatar }}" alt="" />
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Brad Simmons</a>
-                                            <span class="text-muted fw-bold d-block fs-7">Movie Creator</span>
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $key->name }}</a>
+                                            <span class="text-muted fw-bold d-block fs-7">
+                                                @foreach($key->getRoleNames() as $v=>$it)
+                                                    @if ($it == 'Pimpinan')
+                                                        Supervisor
+                                                    @else
+                                                    {{ $it }}
+                                                    @endif
+                                                @endforeach
+                                            </span>
                                         </td>
                                         <td>
-                                            <span class="text-muted fw-bold d-block fs-7">Rating</span>
-                                            <div class="rating">
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                            </div>
+                                            <span class="text-muted fw-bold d-block fs-7">{{ $key->email }}</span>
                                         </td>
                                         <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-light-twitter btn-sm me-3">
-                                                <i class="bi bi-twitter fs-4"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-light-facebook btn-sm">
-                                                <i class="bi bi-facebook fs-4"></i>
-                                            </a>
+                                            <span class="text-muted fw-bold d-block fs-7">{{ $key->created_at }}</span>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="symbol symbol-50px">
-                                                <img src="{{ asset('') }}assets/media/avatars/300-5.jpg" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Jessie Clarcson</a>
-                                            <span class="text-muted fw-bold d-block fs-7">HTML, CSS Coding</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted fw-bold d-block fs-7">Rating</span>
-                                            <div class="rating">
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-light-twitter btn-sm me-3">
-                                                <i class="bi bi-twitter fs-4"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-light-facebook btn-sm">
-                                                <i class="bi bi-facebook fs-4"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="symbol symbol-50px">
-                                                <img src="{{ asset('') }}assets/media/avatars/300-20.jpg" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Lebron Wayde</a>
-                                            <span class="text-muted fw-bold d-block fs-7">ReactJS Developer</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted fw-bold d-block fs-7">Rating</span>
-                                            <div class="rating">
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-light-twitter btn-sm me-3">
-                                                <i class="bi bi-twitter fs-4"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-light-facebook btn-sm">
-                                                <i class="bi bi-facebook fs-4"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="symbol symbol-50px">
-                                                <img src="{{ asset('') }}assets/media/avatars/300-23.jpg" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Natali Trump</a>
-                                            <span class="text-muted fw-bold d-block fs-7">UI/UX Designer</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted fw-bold d-block fs-7">Rating</span>
-                                            <div class="rating">
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-light-twitter btn-sm me-3">
-                                                <i class="bi bi-twitter fs-4"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-light-facebook btn-sm">
-                                                <i class="bi bi-facebook fs-4"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="symbol symbol-50px">
-                                                <img src="{{ asset('') }}assets/media/avatars/300-10.jpg" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Kevin Leonard</a>
-                                            <span class="text-muted fw-bold d-block fs-7">Art Director</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted fw-bold d-block fs-7">Rating</span>
-                                            <div class="rating">
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2 checked">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                                <div class="rating-label me-2">
-                                                    <i class="bi bi-star-fill fs-5"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-icon btn-light-twitter btn-sm me-3">
-                                                <i class="bi bi-twitter fs-4"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-icon btn-light-facebook btn-sm">
-                                                <i class="bi bi-facebook fs-4"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                                 <!--end::Table body-->
                             </table>
