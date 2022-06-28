@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Detail_interval_waktu;
 use App\Models\Detection;
 use App\Models\Kriteria;
 use App\Models\Occurence;
@@ -69,5 +70,12 @@ class Helper
         $t = 1 / (1 + $p * $x);
         $y = 1 - (($a1 * $t + $a2 * pow($t, 2) + $a3 * pow($t, 3) + $a4 * pow($t, 4) + $a5 * pow($t, 5)) * $t) * $sign;
         return $y;
+    }
+
+    static function getHariRcm($id)
+    {
+        $data = Detail_interval_waktu::where('interval_waktu_id', $id)->orderBy('dt', 'asc')->first();
+
+        return $data->t;
     }
 }

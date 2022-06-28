@@ -119,10 +119,11 @@
                                 <td>
                                     <a href="#" class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $item->komponen->nama_komponen }}</a>
                                 </td>
-                                <td class="text-end text-muted fw-bold">{{ $item->waktu_korektif }}</td>
-                                <td class="text-end text-muted fw-bold">{{ $item->waktu_preventif }}</td>
-                                <td class="text-end text-muted fw-bold">{{ substr($item->tf,0,9) }}</td>
-                                <td class="text-end text-muted fw-bold">{{ substr($item->tp,0,9) }}</td>
+                                {{-- <td class="text-end text-muted fw-bold">korektif = {{ $item->waktu_korektif }}</td> --}}
+                                {{-- <td class="text-end text-muted fw-bold">preventif ={{ $item->waktu_preventif }}</td> --}}
+                                <td class="text-end text-muted fw-bold">TF = {{ substr($item->tf,0,6) }}</td>
+                                <td class="text-end text-muted fw-bold">TP = {{ substr($item->tp,0,6) }}</td>
+                                <td class="text-end text-muted fw-bold">Waktu Rcm = {{ App\Helpers\Helper::getHariRcm($item->id) }} Hari</td>
                                 <td class="text-end text-muted fw-bold">
                                     <a href="{{ url('rcm/'.$item->id) }}" class="badge badge-primary">
                                         detail
