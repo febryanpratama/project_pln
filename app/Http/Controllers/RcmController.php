@@ -28,7 +28,7 @@ class RcmController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         $tf = $request->korektif / (24 * 60);
         $tp = $request->preventif / (24 * 60);
@@ -94,6 +94,7 @@ class RcmController extends Controller
             return back()->with('success', 'Berhasil Menambahkan Interval Waktu');
         } catch (\Throwable $th) {
             //throw $th;
+            dd($th);
             DB::rollBack();
             return back()->with('error', $th);
         }
