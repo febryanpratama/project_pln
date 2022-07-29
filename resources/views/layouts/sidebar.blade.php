@@ -125,7 +125,7 @@
                             <!--end::Svg Icon-->
                         </span>
                         <span class="menu-title">Proses FMEA</span>
-                    </a>
+                    </a>t=
                 </div>
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">

@@ -176,12 +176,11 @@
                                     <thead class="text-center align-middle">
                                         <tr class="fw-bold fs-6 text-muted">
                                             <th>Nama Komponen</th>
-                                            <th>Waktu Korektif</th>
-                                            <th>Waktu Preventif</th>
-                                            <th>TF</th>
-                                            <th>TP</th>
-                                            <th>MU</th>
-                                            <th>Sigma</th>
+                                            <th>Kode Komponen</th>
+                                            <th>Nama Subsistem</th>
+                                            {{-- <th>Waktu Korektif</th>
+                                            <th>Waktu Preventif</th> --}}
+                                            <th>Hari Penggantian</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -189,12 +188,11 @@
                                         @foreach ($data as $item=>$key)
                                         <tr>
                                             <td>{{ $key->komponen->nama_komponen }}</td>
-                                            <td>{{ $key->waktu_korektif }}</td>
-                                            <td>{{ $key->waktu_preventif }}</td>
-                                            <td>{{ $key->tf }}</td>
-                                            <td>{{ $key->tp }}</td>
-                                            <td>{{ $key->mu }}</td>
-                                            <td>{{ $key->sigma }}</td>
+                                            <td>{{ $key->komponen->kode_komponen }}</td>
+                                            <td>{{ $key->komponen->subsistem->nama_sub_sistem }}</td>
+                                            {{-- <td>{{ $key->waktu_korektif }}</td>
+                                            <td>{{ $key->waktu_preventif }}</td> --}}
+                                            <td>{{ App\Helpers\Helper::getHariRcm($key->id) }} Hari</td>
                                             <td>
                                                 <div class="d-flex justify-content-center text-white">
                                                     <button class="btn btn-info text-white m-2">
@@ -335,12 +333,11 @@
                                     <tfoot class="text-center">
                                         <tr>
                                             <th>Nama Komponen</th>
-                                            <th>Waktu Korektif</th>
-                                            <th>Waktu Preventif</th>
-                                            <th>TF</th>
-                                            <th>TP</th>
-                                            <th>MU</th>
-                                            <th>Sigma</th>
+                                            <th>Kode Komponen</th>
+                                            <th>Nama Subsistem</th>
+                                            {{-- <th>Waktu Korektif</th>
+                                            <th>Waktu Preventif</th> --}}
+                                            <th>Hari Penggantian</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>

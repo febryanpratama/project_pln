@@ -22,7 +22,8 @@ class RcmController extends Controller
     {
         $title = 'RCM';
         $komponen = Swbs_komponen::get();
-        $data = Interval_waktu::with('komponen')->get();
+        $data = Interval_waktu::with('komponen', 'komponen.subsistem')->get();
+        // dd($data);
         return view('pages.admin.rcm.index', compact(['title', 'data', 'komponen']));
     }
 

@@ -16,4 +16,9 @@ class Interval_waktu extends Model
     {
         return $this->belongsTo(Swbs_komponen::class, 'komponen_id', 'id');
     }
+
+    public function detailIntervalWaktu()
+    {
+        return $this->hasMany(Detail_interval_waktu::class, 'interval_waktu_id', 'id')->main()->first();
+    }
 }
