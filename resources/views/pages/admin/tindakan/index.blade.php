@@ -13,10 +13,12 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
+            @role('Admin')
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">+ Tindakan</a>
             </div>
+            @endrole
             <!--end::Actions-->
         </div>
         <!--end::Container-->
@@ -31,6 +33,7 @@
                 <!--begin::Modal header-->
                 <div class="modal-header">
                     <!--begin::Modal title-->
+                    {{-- {{ dd(Auth::user()->roles) }} --}}
                     <h2>Tambah Pertanyaan LTA</h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
